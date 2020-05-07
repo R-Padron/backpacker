@@ -15,7 +15,7 @@ public class SQLiteJBDC {
         return connection;
     }
 
-    public void createTable(String table) throws SQLException {
+    public void createTable(String table) {
         String sql = "CREATE TABLE IF NOT EXISTS " + table +
                 "(ID INTEGER PRIMARY KEY," +
                 " ItemName TEXT NOT NULL," +

@@ -39,21 +39,24 @@ public class PrimaryController implements Initializable {
     }
 
     public void tripClick(ActionEvent actionEvent) {
+        //opens trip planner pane
         tripView.toFront();
-
     }
 
     public void invClick(ActionEvent actionEvent) {
+        //open inventory pane
         inventoryView.toFront();
     }
 
     public void addItemRelease(MouseEvent mouseEvent) throws IOException {
+        //opens add item popup window
         Parent popup = FXMLLoader.load(getClass().getResource("/com/backpacker/resources/AddItem.fxml"));
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setTitle("Add new item");
         stage.setScene(new Scene(popup));
         stage.showAndWait();
+        //when user add items the table is refreshed from database
         System.out.println("window closed");
         clothingTable.getColumns().clear();
         sleepTable.getColumns().clear();
