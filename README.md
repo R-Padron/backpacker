@@ -1,5 +1,5 @@
 # backpacker
-Application to manage camping gear inventory and track pack weight
+Application to manage camping gear inventory and track pack weight  
 This is my first application. Be gentle
 
 ## Todo
