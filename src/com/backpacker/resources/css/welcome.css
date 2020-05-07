@@ -1,0 +1,4 @@
+.pane{
+    -fx-background-image: url('icons/welcome.jpg');
+    -fx-background-size: cover;
+}
