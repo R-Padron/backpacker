@@ -1,10 +1,8 @@
 package com.backpacker.resources.utility;
 
-import com.backpacker.controllers.PrimaryController;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 
@@ -19,14 +17,14 @@ public class tools {
 
         try{
             ResultSet rs = connect.selectAll(table);
-
+            //generates dynamic table column names in passed table based on database column names
             for(int i=0 ; i<rs.getMetaData().getColumnCount(); i++){
                 final int j = i;
                 TableColumn<ObservableList<String>, String> col = new TableColumn<>(rs.getMetaData().getColumnName(i + 1));
                 col.setCellValueFactory(param -> new SimpleStringProperty(param.getValue().get(j)));
                 a.getColumns().add(col);
             }
-
+            //adds rows to table from database
             while(rs.next()){
                 ObservableList<String> row = FXCollections.observableArrayList();
                 for(int i=1 ; i<=rs.getMetaData().getColumnCount(); i++){

@@ -30,24 +30,23 @@ public class AddItemController implements Initializable {
     }
 
     public void addItemClick(ActionEvent actionEvent) {
+        String cat = categoryMenu.getValue();
+        String iName = itemNameField.getText();
+        int qty = Integer.parseInt(quantityField.getText());
+        //add error catch for all fields
+        float weight=0;
         try {
-            String cat = categoryMenu.getValue();
-            String iName = itemNameField.getText();
-            float weight = Float.parseFloat(weightField.getText());
-            int qty = Integer.parseInt(quantityField.getText());
+            weight = Float.parseFloat(weightField.getText());
         }
         catch (NumberFormatException e) {
-            System.out.println(e.getMessage());
+            if (e.getMessage().equals("empty String")) {
+                weight = 0;
+            }
         }
-
-        /*
+        //takes data from fields and inserts item to database
         SQLiteJBDC db = new SQLiteJBDC();
         db.insert(cat, iName, qty, weight);
-
-         */
         Stage stage = (Stage) addButton.getScene().getWindow();
         stage.close();
-
-
     }
 }

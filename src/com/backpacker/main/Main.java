@@ -7,7 +7,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import java.sql.SQLException;
 
 public class Main extends Application {
 
@@ -22,12 +21,8 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         SQLiteJBDC db = new SQLiteJBDC();
-        try {
-            db.createTable("Clothing");
-            db.createTable("Sleep");
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+        db.createTable("Clothing");
+        db.createTable("Sleep");
         launch(args);
     }
 }
