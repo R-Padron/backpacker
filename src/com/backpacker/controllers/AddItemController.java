@@ -1,5 +1,6 @@
 package com.backpacker.controllers;
 
+import com.backpacker.resources.utility.tools;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -11,6 +12,7 @@ import com.backpacker.resources.utility.SQLiteJBDC;
 import javafx.stage.Stage;
 
 import java.net.URL;
+import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
 public class AddItemController implements Initializable {
@@ -24,28 +26,34 @@ public class AddItemController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        String[] catOptions = {"Clothing", "Sleep"};
-        ObservableList<String> category = FXCollections.observableArrayList(catOptions);
+        ObservableList<String> category = FXCollections.observableArrayList(tools.getCategories());
         categoryMenu.setItems(category);
     }
 
     public void addItemClick(ActionEvent actionEvent) {
+        float grams = 0;
+        float pounds = 0;
+        float oz = 0;
+
+
         String cat = categoryMenu.getValue();
         String iName = itemNameField.getText();
         int qty = Integer.parseInt(quantityField.getText());
         //add error catch for all fields
-        float weight=0;
         try {
-            weight = Float.parseFloat(weightField.getText());
+            oz = Float.parseFloat(weightField.getText());
+            grams = (float) tools.ozToGrams(oz);
+            pounds = (float) tools.ozToPounds(oz);
         }
         catch (NumberFormatException e) {
             if (e.getMessage().equals("empty String")) {
-                weight = 0;
+                oz = 0;
             }
         }
         //takes data from fields and inserts item to database
         SQLiteJBDC db = new SQLiteJBDC();
-        db.insert(cat, iName, qty, weight);
+        System.out.println();
+        db.insertItem(cat, iName, qty, oz, grams, pounds);
         Stage stage = (Stage) addButton.getScene().getWindow();
         stage.close();
     }

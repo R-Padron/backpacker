@@ -1,5 +1,6 @@
 package com.backpacker.controllers;
 
+import com.backpacker.resources.utility.SQLiteJBDC;
 import com.backpacker.resources.utility.tools;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -7,9 +8,9 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ScrollPane;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
@@ -23,19 +24,24 @@ public class PrimaryController implements Initializable {
 
     public Button invButton;
     public Button tripButton;
-    public AnchorPane primaryView;
-    public ScrollPane inventoryView;
     public ScrollPane tripView;
+    public AnchorPane primaryView;
     public Pane welcomeView;
+    public AnchorPane invView;
     public Button addNew;
-    public TableView<ObservableList<String>> clothingTable;
-    public TableView<ObservableList<String>> sleepTable;
+    public TabPane invTabPane;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         welcomeView.toFront();
-        tools.buildData(sleepTable, "Sleep");
-        tools.buildData(clothingTable, "Clothing");
+        try {
+            tools.readCategory();
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println(e.getMessage());
+        }
+        tools.refreshTabs(invTabPane);
+        //tools.createTab(invTabPane, "Tools");
+        //tools.setCategories("Tools");
     }
 
     public void tripClick(ActionEvent actionEvent) {
@@ -45,7 +51,7 @@ public class PrimaryController implements Initializable {
 
     public void invClick(ActionEvent actionEvent) {
         //open inventory pane
-        inventoryView.toFront();
+        invView.toFront();
     }
 
     public void addItemRelease(MouseEvent mouseEvent) throws IOException {
@@ -53,18 +59,54 @@ public class PrimaryController implements Initializable {
         Parent popup = FXMLLoader.load(getClass().getResource("/com/backpacker/resources/AddItem.fxml"));
         Stage stage = new Stage();
         stage.initModality(Modality.APPLICATION_MODAL);
-        stage.setTitle("Add new item");
+        stage.setTitle("Add New Item");
         stage.setScene(new Scene(popup));
         stage.showAndWait();
         //when user add items the table is refreshed from database
         System.out.println("window closed");
-        clothingTable.getColumns().clear();
-        sleepTable.getColumns().clear();
-        tools.buildData(sleepTable, "Sleep");
-        tools.buildData(clothingTable, "Clothing");
+
+        for(TableView<ObservableList<String>> x : tools.tableViewNames) {
+            x.getColumns().clear();
+            tools.buildData(x, x.getId());
+            }
+        }
+
+    public void tapPaneKeyPress(KeyEvent keyEvent) {
+        SQLiteJBDC db = new SQLiteJBDC();
+        if(keyEvent.getCode() == KeyCode.DELETE) {
+            TableView<ObservableList<String>> x = (TableView<ObservableList<String>>) invTabPane.getSelectionModel().getSelectedItem().getContent();
+            int id = Integer.parseInt(x.getSelectionModel().getSelectedItem().get(0));
+            String table = invTabPane.getSelectionModel().getSelectedItem().getText();
+            db.deleteItem(id, table);
+            System.out.println(x.getSelectionModel().getSelectedItem() + " was deleted");
+            x.getColumns().clear();
+            tools.buildData(x, table);
+        }
+        else if(keyEvent.getCode() == KeyCode.Z) {
+            String tab = invTabPane.getSelectionModel().getSelectedItem().getText();
+            db.deleteTable(tab);
+            tools.removeCategory(tab);
+            tools.tabCount=0;
+            invTabPane.getTabs().clear();
+            tools.refreshTabs(invTabPane);
+        }
     }
 
-    public void clothingTableClicked(MouseEvent mouseEvent) {
-        System.out.println(clothingTable.getSelectionModel().getSelectedItem());
+    public void tabPaneClick(MouseEvent mouseEvent) throws IOException {
+        if(invTabPane.getSelectionModel().getSelectedItem().getText().equalsIgnoreCase("+")) {
+            Parent popup = FXMLLoader.load(getClass().getResource("/com/backpacker/resources/AddCategory.fxml"));
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setTitle("Add New Category");
+            stage.setScene(new Scene(popup));
+            stage.showAndWait();
+            if(!(AddCategoryController.newCat == null)) {
+                tools.createTab(invTabPane, AddCategoryController.newCat);
+                AddCategoryController.newCat = null;
+                tools.tabCount=0;
+                invTabPane.getTabs().clear();
+                tools.refreshTabs(invTabPane);
+            }
+        }
     }
 }
