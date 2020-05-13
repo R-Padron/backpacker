@@ -1,12 +1,15 @@
 package com.backpacker.main;
 
 import com.backpacker.resources.utility.SQLiteJBDC;
+import com.backpacker.resources.utility.tools;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class Main extends Application {
 
@@ -20,9 +23,6 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        SQLiteJBDC db = new SQLiteJBDC();
-        db.createTable("Clothing");
-        db.createTable("Sleep");
         launch(args);
     }
 }
