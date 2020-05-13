@@ -57,6 +57,7 @@ public class tools {
             System.out.println("Error on Building Data");
         }
     }
+
     //formatting weight functions
     public static double ozToGrams(float oz) {
         return oz * 28.35;
@@ -73,6 +74,7 @@ public class tools {
         return dFormat.format(i);
     }
 
+    //category arraylist getters and setter
     public static ArrayList<String> getCategories() {
         return categories;
     }
@@ -87,8 +89,8 @@ public class tools {
         saveCategory(categories);
     }
 
+    //function to create tab and tableview within it
     public static void createTab(TabPane tabPane, String table){
-        //function to create tab and tableview
         SQLiteJBDC db = new SQLiteJBDC();
         tabPane.getTabs().add(new Tab(table));
 
@@ -107,6 +109,7 @@ public class tools {
         }
     }
 
+    //creates + tab and sets it to right most position
     public static void addCatTab(TabPane tabPane) {
         try {
             System.out.println("Last tab is: " + tabPane.getTabs().get(tabCount).getText());
@@ -125,13 +128,16 @@ public class tools {
         tabPane.getTabs().add(new Tab("+"));
     }
 
+    //refreshes data on all tabs
     public static void refreshTabs(TabPane tabPane) {
+        tabPane.getTabs().clear();
         for(String x : categories) {
             tools.createTab(tabPane, x);
         }
         tools.addCatTab(tabPane);
     }
 
+    //saves categories to file
     public static void saveCategory(ArrayList<String> x) {
         try {
             FileOutputStream fileOut = new FileOutputStream("src\\com\\backpacker\\resources\\data\\categories.ser");
@@ -145,7 +151,7 @@ public class tools {
             e.printStackTrace();
         }
     }
-
+    //reads categories from file
     public static void readCategory() throws IOException, ClassNotFoundException {
         FileInputStream fileIn = new FileInputStream("src\\com\\backpacker\\resources\\data\\categories.ser");
         ObjectInputStream objIn = new ObjectInputStream(fileIn);

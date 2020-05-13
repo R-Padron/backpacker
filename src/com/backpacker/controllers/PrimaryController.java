@@ -73,6 +73,7 @@ public class PrimaryController implements Initializable {
 
     public void tapPaneKeyPress(KeyEvent keyEvent) {
         SQLiteJBDC db = new SQLiteJBDC();
+        //deletes selected row when you press delete key
         if(keyEvent.getCode() == KeyCode.DELETE) {
             TableView<ObservableList<String>> x = (TableView<ObservableList<String>>) invTabPane.getSelectionModel().getSelectedItem().getContent();
             int id = Integer.parseInt(x.getSelectionModel().getSelectedItem().get(0));
@@ -81,18 +82,18 @@ public class PrimaryController implements Initializable {
             System.out.println(x.getSelectionModel().getSelectedItem() + " was deleted");
             x.getColumns().clear();
             tools.buildData(x, table);
-        }
+        }//deletes entire tab when you press z key (pending better deletion trigger
         else if(keyEvent.getCode() == KeyCode.Z) {
             String tab = invTabPane.getSelectionModel().getSelectedItem().getText();
             db.deleteTable(tab);
             tools.removeCategory(tab);
             tools.tabCount=0;
-            invTabPane.getTabs().clear();
             tools.refreshTabs(invTabPane);
         }
     }
 
     public void tabPaneClick(MouseEvent mouseEvent) throws IOException {
+        //creates + tab that allows creating new categories
         if(invTabPane.getSelectionModel().getSelectedItem().getText().equalsIgnoreCase("+")) {
             Parent popup = FXMLLoader.load(getClass().getResource("/com/backpacker/resources/AddCategory.fxml"));
             Stage stage = new Stage();
@@ -104,7 +105,6 @@ public class PrimaryController implements Initializable {
                 tools.createTab(invTabPane, AddCategoryController.newCat);
                 AddCategoryController.newCat = null;
                 tools.tabCount=0;
-                invTabPane.getTabs().clear();
                 tools.refreshTabs(invTabPane);
             }
         }
