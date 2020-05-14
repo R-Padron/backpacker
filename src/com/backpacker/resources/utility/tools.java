@@ -7,6 +7,9 @@ import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
+
 import java.io.*;
 import java.sql.ResultSet;
 import java.text.DecimalFormat;
@@ -125,7 +128,10 @@ public class tools {
         catch(Exception e){
             System.out.println("No tab available: " + e.getMessage());
         }
-        tabPane.getTabs().add(new Tab("+"));
+        TableView<String> blank = new TableView<String>();
+        Tab addTab = new Tab("+");
+        tabPane.getTabs().add(addTab);
+        addTab.setContent(blank);
     }
 
     //refreshes data on all tabs

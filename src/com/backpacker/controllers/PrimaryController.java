@@ -94,6 +94,10 @@ public class PrimaryController implements Initializable {
 
     public void tabPaneClick(MouseEvent mouseEvent) throws IOException {
         //creates + tab that allows creating new categories
+        System.out.println("x:" + mouseEvent.getX() + " y:" + mouseEvent.getY() + " z:" + mouseEvent.getZ());
+        System.out.println(invTabPane.getTabs().get(tools.tabCount).getText());
+        System.out.println(invTabPane.getSelectionModel().getSelectedItem().getText().equalsIgnoreCase("+"));
+
         if(invTabPane.getSelectionModel().getSelectedItem().getText().equalsIgnoreCase("+")) {
             Parent popup = FXMLLoader.load(getClass().getResource("/com/backpacker/resources/AddCategory.fxml"));
             Stage stage = new Stage();

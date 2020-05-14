@@ -46,10 +46,11 @@
       <Pane fx:id="welcomeView" layoutX="100.0" prefHeight="400.0" prefWidth="500.0" styleClass="pane" stylesheets="@css/welcome.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <AnchorPane fx:id="invView" prefHeight="400.0" prefWidth="500.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TabPane fx:id="invTabPane" onKeyPressed="#tapPaneKeyPress" onMouseClicked="#tabPaneClick" prefHeight="700.0" prefWidth="1100.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <TabPane fx:id="invTabPane" onKeyPressed="#tapPaneKeyPress" onMouseClicked="#tabPaneClick" prefHeight="700.0" prefWidth="1100.0" tabClosingPolicy="UNAVAILABLE">
                <padding>
                   <Insets left="2.0" />
-               </padding></TabPane>
+               </padding>
+            </TabPane>
          </children>
       </AnchorPane>
    </children>

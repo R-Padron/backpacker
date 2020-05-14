@@ -6,7 +6,7 @@ This is my first application. Be gentle.
 - [x] Add ability to delete item(import ID and make hidden? will allow unique item tracking)  
 - [ ] Add error catching to add item and add category window
 - [ ] Add sub-category(sub-type?) for items
-- [ ] Add weight conversion to g & lbs
+- [x] Add weight conversion to g & lbs
 - [x] Add ability to add and delete category
 ##### Trip Planner tab  
 - [ ] Add loadout saves
