@@ -3,10 +3,7 @@ package com.backpacker.resources.utility;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.Tab;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
@@ -108,6 +105,8 @@ public class tools {
                 tabPane.getTabs().get(i).setContent(tableView);
                 tableView.setId(table);
                 tableViewNames.add(tableView);
+                tableView.setColumnResizePolicy(TableView.CONSTRAINED_RESIZE_POLICY);
+                //tableView.setPlaceholder(new Label(""));
             }
         }
     }

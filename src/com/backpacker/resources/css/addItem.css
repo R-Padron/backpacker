@@ -1,0 +1,66 @@
+.button {
+    -fx-background-color: #b3cde0;
+}
+.button:pressed {
+    -fx-background-color: #07b1e8;
+    -fx-border-color: black;
+}
+.button:hover {
+    -fx-background-color: #03396c;
+    -fx-text-fill: white;
+}
+.anchor-pane {
+    -fx-background-color: #03396c;
+}
+.pane {
+    -fx-background-color: #011f4b;
+}
+.text-field {
+    -fx-background-color: #6497b1;
+    -fx-text-fill: black;
+    -fx-prompt-text-fill: white;
+}
+.combo-box {
+    -fx-background-color: transparent;
+}
+.combo-box .list-cell {
+    -fx-text-fill: black;
+    -fx-background-radius: 5 0 0 0;
+    -fx-background-color: linear-gradient(to left, #005b96 0%, #b3cde0 100%);
+}
+.combo-box-popup .list-view {
+    -fx-background-color: linear-gradient(to left, #005b96 0%, #b3cde0 100%);
+    -fx-background-radius: 0 0 5 5;
+    -fx-background-insets: -1 -1 -1 -1;
+}
+.combo-box-popup .list-view .list-cell:hover {
+    -fx-background-color: #b3cde0;
+    -fx-background-radius: 5 5 5 5;
+    -fx-border-color: #b3cde0;
+    -fx-border-radius: 5 5 5 5;
+    -fx-effect: innershadow(two-pass-box, black, 10, 0, 0, 0 );
+}
+.combo-box-popup .list-view .list-cell:filled:pressed {
+    -fx-border-color: black;
+    -fx-border-radius: 0 0 0 0;
+}
+.combo-box .arrow-button .arrow {
+    -fx-background-color: black;
+}
+.combo-box .arrow-button {
+    -fx-background-radius: 0 5 0 0;
+    -fx-background-color: #005b96;
+}
+.combo-box .arrow-button:pressed {
+    -fx-border-color: white;
+    -fx-border-radius: 0 5 0 0;
+}
+.combo-box .list-view .scroll-bar {
+    -fx-background-color: #011f4b;
+}
+.combo-box .list-view .scroll-bar .thumb {
+    -fx-background-color: #b3cde0;
+}
+.combo-box .list-view .scroll-bar .increment-button:hover, .combo-box .list-view .scroll-bar .decrement-button:hover {
+    -fx-background-color: #b3cde0;
+}

@@ -18,7 +18,9 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/com/backpacker/resources/Primary.fxml"));
         stage.setTitle("Backpacker Planner");
         stage.getIcons().add(new Image("com/backpacker/resources/css/icons/title.png"));
-        stage.setScene(new Scene(root, 1200, 700));
+        stage.setScene(new Scene(root));
+        stage.setMinHeight(250);
+        stage.setMinWidth(250);
         stage.show();
     }
 

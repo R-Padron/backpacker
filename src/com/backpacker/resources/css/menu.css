@@ -1,10 +1,17 @@
 .button {
-    -fx-background-color: #80bfc2;
+    -fx-background-color: #b3cde0;
+    -fx-background-radius: 0 25 0 25;
 }
-.button:pressed{
+.button:pressed {
     -fx-background-color: #07b1e8;
+    -fx-border-color: black;
+    -fx-border-radius: 0 25 0 25;
+    -fx-background-radius: 0 25 0 25;
 }
-
-.pane{
-    -fx-background-color: #325ca8;
+.button:hover {
+    -fx-background-color: #03396c;
+    -fx-text-fill: white;
+}
+.VBox {
+    -fx-background-color: #011f4b;
 }

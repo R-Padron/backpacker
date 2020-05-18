@@ -61,6 +61,8 @@ public class PrimaryController implements Initializable {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.setTitle("Add New Item");
         stage.setScene(new Scene(popup));
+        stage.setMaxHeight(400);
+        stage.setMaxWidth(600);
         stage.showAndWait();
         //when user add items the table is refreshed from database
         System.out.println("window closed");
