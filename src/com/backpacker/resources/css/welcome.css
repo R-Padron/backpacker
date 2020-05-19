@@ -1,4 +1,6 @@
 .pane{
     -fx-background-image: url('icons/welcome.jpg');
     -fx-background-size: cover;
+    -fx-border-color: linear-gradient(to right, #011f4b 0%, #6497b1 100%) #6497b1 linear-gradient(to right, #011f4b 0%, #6497b1 100%);
+    -fx-border-width: 8 8 8 0;
 }

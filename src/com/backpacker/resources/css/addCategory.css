@@ -1,0 +1,22 @@
+.button {
+    -fx-background-color: #b3cde0;
+}
+.button:pressed {
+    -fx-background-color: #07b1e8;
+    -fx-border-color: black;
+}
+.button:hover {
+    -fx-background-color: #03396c;
+    -fx-text-fill: white;
+}
+.text-field {
+    -fx-background-color: #6497b1;
+    -fx-text-fill: black;
+}
+.anchor-pane {
+    -fx-background-color: #03396c;
+}
+.image-view {
+    -fx-image: url('icons/camping-gear.png');
+    -fx-border-width: 20;
+}

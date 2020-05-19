@@ -17,8 +17,8 @@
 }
 .text-field {
     -fx-background-color: #6497b1;
-    -fx-text-fill: black;
-    -fx-prompt-text-fill: white;
+    -fx-text-fill: white;
+    -fx-prompt-text-fill: black;
 }
 .combo-box {
     -fx-background-color: transparent;

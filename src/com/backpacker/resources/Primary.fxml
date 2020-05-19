@@ -16,7 +16,6 @@
 <AnchorPane fx:id="primaryView" prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.backpacker.controllers.PrimaryController">
    <children>
       <Pane fx:id="menuBar" layoutX="79.0" prefHeight="400.0" prefWidth="100.0" styleClass="pane" stylesheets="@css/menu.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <Pane fx:id="welcomeView" layoutX="100.0" prefHeight="400.0" prefWidth="500.0" styleClass="pane" stylesheets="@css/welcome.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
       <VBox alignment="CENTER" prefHeight="700.0" prefWidth="100.0" styleClass="VBox" stylesheets="@css/menu.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
@@ -84,5 +83,6 @@
             <TabPane fx:id="invTabPane" onKeyPressed="#tapPaneKeyPress" onMouseClicked="#tabPaneClick" prefHeight="700.0" prefWidth="1100.0" styleClass="indexed-cell" stylesheets="@css/table.css" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
          </children>
       </AnchorPane>
+      <Pane fx:id="welcomeView" layoutX="100.0" prefHeight="400.0" prefWidth="500.0" styleClass="pane" stylesheets="@css/welcome.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="100.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
 </AnchorPane>

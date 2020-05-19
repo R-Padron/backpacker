@@ -106,6 +106,8 @@ public class PrimaryController implements Initializable {
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setTitle("Add New Category");
             stage.setScene(new Scene(popup));
+            stage.setMaxHeight(450);
+            stage.setMaxWidth(600);
             stage.showAndWait();
             if(!(AddCategoryController.newCat == null)) {
                 tools.createTab(invTabPane, AddCategoryController.newCat);
