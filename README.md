@@ -1,6 +1,5 @@
 # backpacker
 Application to manage camping gear inventory and track pack weight  
-This is my first application. Be gentle.
 
 ## Todo
 - [x] Add ability to delete item(import ID and make hidden? will allow unique item tracking)  
